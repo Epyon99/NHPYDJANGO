@@ -1,0 +1,13 @@
+{
+    "prop1":"valor",
+    "prop2":1,
+    "prop3":1.3,
+    "prop4":true,
+    "prop5":{
+        "hola":"mundo"
+    },
+    "prop6":[
+        {}
+    ]
+
+}
