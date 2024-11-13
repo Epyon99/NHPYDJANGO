@@ -16,3 +16,7 @@ class Marca(models.Model):
     
     def __str__(self):
         return self.name
+
+class MarcaProducto(models.Model):
+    listaMarcas = Marca
+    listaProductos = Producto

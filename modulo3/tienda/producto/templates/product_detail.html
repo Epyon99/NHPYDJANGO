@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block title %} {{producto.name}} {% endblock %}
+
+{% block content %}
+<h1>{{producto.name}}</h1>
+<span>Placeholder</span>
+<p>{{producto.descripcion}}</p>
+<p><strong>Precio: </strong> PEN {{producto.price}}</p>
+<a class="btn btn-info" href="/productos/">Volver a lista</a>
+{% endblock %}
