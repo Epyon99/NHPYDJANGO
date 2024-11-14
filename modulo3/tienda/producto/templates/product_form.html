@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %} Crear Producto {% endblock %}
+
+{% block content %}
+<!--Mostrar como afecta enctype el request-->
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <table>
+        {{ form.as_table}}
+    </table>
+    <button type="submit" class="btn btn-success">Guardar</button>
+</form>
+{% endblock %}

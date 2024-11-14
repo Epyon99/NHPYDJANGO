@@ -16,7 +16,7 @@ Listas de productos
         </tr>
     </thead>
     <tbody>
-        {% for producto in productos %}
+        {% for producto in object_list %}
             <tr>
                 <td><a href="{% url 'product_detail' producto.id %}">{{producto.name}}</a></td>
                 <td>{{producto.descripcion}}</td>
