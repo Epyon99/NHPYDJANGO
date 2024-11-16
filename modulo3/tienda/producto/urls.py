@@ -10,5 +10,6 @@ urlpatterns=[
     path('updateview/<int:pk>/',views.ProductoUpdateView.as_view(), name ='product_updateview'),
     path('createview/',views.ProductoCreateView.as_view(), name ='product_createview'),
     path('deleteview/<int:pk>/',views.ProductoDeleteView.as_view(), name ='product_deleteview')
-    ,path('delete/<int:pk>/',views.producto_delete, name ='product_delete')
+    ,path('delete/<int:pk>/',views.producto_delete, name ='product_delete'),
+    path('proveedor/<int:proveedor_id>/',views.proveedor_detail,name ='proveedor_detail')
 ]

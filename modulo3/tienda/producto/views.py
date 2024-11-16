@@ -1,12 +1,27 @@
 from django.http import HttpResponse, JsonResponse
 from django.shortcuts import get_object_or_404, render
 from flask import redirect
-from producto.forms import ProductoForm
-from producto.models import Producto
+from producto.forms import ProductoForm, ProductoProveedorForm
+from producto.models import Producto, Proveedor
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
 
 
 # Create your views here.
+def proveedor_detail(request, proveedor_id):
+    proveedor = Proveedor.objects.get(id=proveedor_id)
+
+    if (request.method == 'POST'):
+        print (proveedor)
+        form = ProductoProveedorForm(request.POST)
+        if (form.is_valid()):
+            producto = form.save(commit=False)
+            print (producto)
+            print ('antes del save')
+            producto.proveedor = proveedor
+            producto.save()
+    form = ProductoProveedorForm
+    return render(request,'proveedor_detail.html',{'object':proveedor,'form':form})
+
 def product_list(request):
     my_productos = Producto.objects.all()
     if my_productos.count() == 0:
