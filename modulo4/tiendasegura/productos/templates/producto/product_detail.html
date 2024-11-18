@@ -7,5 +7,6 @@
 <span>Placeholder</span>
 <p>{{object.descripcion}}</p>
 <p><strong>Precio: </strong> PEN {{object.price}}</p>
+{% if object.image %} <img src="{{ object.image.url }}" alt="{{ object.nombre }}" width="100"> {% endif %}
 <a class="btn btn-info" href="/productos/">Volver a lista</a>
 {% endblock %}
