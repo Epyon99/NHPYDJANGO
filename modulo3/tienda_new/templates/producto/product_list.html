@@ -1,0 +1,15 @@
+{% block content %}
+<h1>Lista de Productos</h1>
+<ul>
+    {% for producto in productos %}
+    <li>
+        <a href="{{ url_for('main.detail_product', product_id=producto.id) }}">
+            {{ producto.nombre }}</a>
+        <form method="POST" action="{{ url_for('main.delete_product', product_id=producto.id) }}">
+            <button type="submit">Eliminar</button>
+        </form>
+    </li>
+    {% endfor %}
+</ul>
+<a href="{{ url_for('main.create_product') }}">Crear Producto</a>
+{% endblock %}

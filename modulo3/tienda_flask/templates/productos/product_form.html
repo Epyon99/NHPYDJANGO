@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Crear Producto </h1>
+
+<form method="POST">
+    {{ form.hidden_tag() }}
+    <div>
+        {{ form.nombre.label }} {{form.nombre}}
+        <div>
+            {% for error in form.nombre.errors %} 
+                <span style="color: red;">[{{error}}]</span>
+            {% endfor %}
+        </div>
+    </div>
+    <div>
+        {{ form.precio.label}} {{form.precio}}
+        <div>
+            {% for error in form.precio.errors %} 
+                <span style="color: red;">[{{error}}]</span>
+            {% endfor %}
+        </div>
+    </div>
+    <div>
+        {{ form.descripcion.label}} {{form.descripcion}}
+        <div>
+            {% for error in form.descripcion.errors %} 
+                <span style="color: red;">[{{error}}]</span>
+            {% endfor %}
+        </div>
+    </div>
+    <div>
+        {{ form.imagen.label}} {{form.imagen}}
+        <div>
+            {% for error in form.imagen.errors %} 
+                <span style="color: red;">[{{error}}]</span>
+            {% endfor %}
+        </div>
+    </div>
+    {{ form.submit }}
+</form>
+<a href="{{ url_for('productos.list_producto')}}">Volver a la lista</a>
+{%endblock%}

@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Lista de productos </h1>
+
+<ul>
+    {% for producto in productos %}
+        <li>
+            <span>
+            <a href="#">
+                {{producto.nombre}}
+            </a>
+            - {{producto.precio}}
+            </span>
+            <form action="{{ url_for('productos.delete_producto', product_id=producto.id) }}" method="POST">
+                <button type="submit">Borrar</button>
+            </form>
+        </li>
+    {% endfor %}
+</ul>
+<a href="{{ url_for('productos.create_producto')}}">Crear Producto</a>
+{%endblock%}

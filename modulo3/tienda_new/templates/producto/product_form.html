@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Crear Producto</h1>
+<form method="POST">
+    {{ form.hidden_tag() }}
+    {{ form.nombre.label }} {{ form.nombre  }}
+    {% for error in form.nombre.errors %} <span style="color: red;">[{{ error }}]</span> {% endfor %}
+    {{ form.precio.label }} {{ form.precio }}
+    {% for error in form.precio.errors %} <span style="color: red;">[{{ error }}]</span> {% endfor %}
+    {{ form.imagen.label }} {{ form.imagen() }} {% for error in form.imagen.errors %} <span style="color: red;">[{{ error }}]</span> {% endfor %}
+    {{ form.submit }}
+    
+</form>   
+{% endblock %}
