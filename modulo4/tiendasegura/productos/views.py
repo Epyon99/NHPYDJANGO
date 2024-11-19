@@ -3,6 +3,7 @@ from django.views import View
 from django.views.generic import ListView,CreateView,DeleteView,UpdateView,DetailView
 from .forms import ProveedorForm, ProductoForm, AlmacenForm
 from .models import Almacen, Producto, Proveedor
+from django.contrib.auth.mixins import LoginRequiredMixin,PermissionRequiredMixin
 
 def create_almacen(request):
     if request.method == 'POST':
@@ -25,9 +26,11 @@ def edit_almacen(request, almacen_id):
         form = AlmacenForm(instance=almacen)
     return render(request, 'almacen/almacen_edit.html', {'form': form, 'almacen': almacen})
 
-class ProductoListView(ListView):
+class ProductoListView(PermissionRequiredMixin,ListView):
     model = Producto
     template_name = 'producto/product_list.html'
+    permission_required = 'productos.view_producto'
+    login_url = '/accounts/login/' # Donde autenticarse
 
 class ProductoView(DetailView):
     model = Producto
@@ -59,7 +62,7 @@ class ProveedoresClassView(View):
         else:
             form =ProveedorForm()
             return render(request,'proveedor/proveedor_form.html',{'form':form})
-    def post(sef,request):
+    def post(self,request):
         form = ProveedorForm(request.POST)
         if form.is_valid():
             form.save()
