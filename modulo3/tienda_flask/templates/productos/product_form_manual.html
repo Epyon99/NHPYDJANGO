@@ -38,25 +38,26 @@
         </div>
     </div>
     <div>
+        {{form.Proveedor.label}}
+        <select name="Proveedor" id="Proveedor"> 
+            {% for prov in proveedores %} 
+            <option value="{{ prov.id }}">
+                {{ prov.descripcion }}
+            </option> 
+            {% endfor %} 
+        </select>
         <div>
-            {{ form.proveedor.label}} {{form.proveedor}}
-            <div>
-                {% for error in form.proveedor.errors %} 
-                    <span style="color: red;">[{{error}}]</span>
-                {% endfor %}
-            </div>
-        </div>    
+            {{form.almacenes.label}}
+            {% for curso in cursos %} <input type="checkbox" name="cursos" value="{{ curso.id }}" id="curso_{{ curso.id }}"> <label for="curso_{{ curso.id }}">{{ curso.nombre }}</label><br> {% endfor %}
+        </div>
     </div>
     <div>
-        <div>
-            {{ form.almacenes.label}} {{form.almacenes}}
-            <div>
-                {% for error in form.almacenes.errors %} 
-                    <span style="color: red;">[{{error}}]</span>
-                {% endfor %}
-            </div>
-        </div>    
+        
     </div>
+    <label for="almacenes">Almacenes:</label><br> 
+        {% for alm in almacenes %} 
+            <input type="checkbox" name="cursos" value="{{ alm.id }}" id="almacenes-{{ alm.id }}"> <label for="almacenes_{{ alm.id }}">{{ alm.nombre }}</label><br> 
+        {% endfor %}
     {{ form.submit }}
 </form>
 <a href="{{ url_for('productos.list_producto')}}">Volver a la lista</a>
